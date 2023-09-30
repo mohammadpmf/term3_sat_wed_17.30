@@ -1,0 +1,23 @@
+from tkinter import *
+
+root = Tk()
+root.title("Mohammad Pourmohammadi Fallah :D")
+root.geometry("900x600")
+root.resizable(0, 0)
+root.config(bg='#ed40d6')
+lable_name      = Label(root, bg='#ed40d6', fg='red', text="Enter Your name here:", font=('',20))
+lable_surname   = Label(root, bg='#ed40d6', fg='red', text="Enter Your surname here:", font=('',20))
+lable_age       = Label(root, bg='#ed40d6', fg='red', text="Enter Your age here:", font=('',20))
+entry_name      = Entry(root, font=('', 20), fg='green')
+entry_surname   = Entry(root, font=('', 20), fg='green')
+entry_age       = Entry(root, font=('', 20), fg='green')
+btn_save        = Button(root, text='Save', font=('', 20), 
+bg='black', fg='white', activebackground='white', activeforeground='black')
+lable_name      .pack(pady=10)
+entry_name      .pack(pady=10)
+lable_surname   .pack(pady=10)
+entry_surname   .pack(pady=10)
+lable_age       .pack(pady=10)
+entry_age       .pack(pady=10)
+btn_save        .pack(pady=10)
+mainloop()
