@@ -28,5 +28,5 @@ lbl_b.grid(row=1, column=0)
 btn_b2.grid(row=2, column=0)
 btn_l1.grid(row=0, column=1)
 lbl_l.grid(row=1, column=1)
-btn_l2.grid(row=2, column=1) smogus
+btn_l2.grid(row=2, column=1)
 mainloop()

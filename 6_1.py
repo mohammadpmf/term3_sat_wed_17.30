@@ -3,11 +3,11 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 # pip install pillow
 # py -m pip install pillow
-# p = PhotoImage(file='mar.jpeg')
+# p = PhotoImage(file='tamrins/mar.jpeg')
 root = Tk()
 # address = filedialog.askopenfilename()
 # p1 = Image.open(address)
-p1 = Image.open('tom.png')
+p1 = Image.open('tamrins/tom.png')
 p1 = p1.resize((160,160))
 p = ImageTk.PhotoImage(p1)
 label_pic = Label(root, image=p)
