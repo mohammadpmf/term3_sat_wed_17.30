@@ -1,5 +1,7 @@
 from tkinter import *
 from time import sleep
+
+
 root = Tk()
 root.geometry('600x600')
 def start(n):
