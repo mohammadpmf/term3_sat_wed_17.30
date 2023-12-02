@@ -22,10 +22,15 @@ def enter():
     data = get_info(filedialog.askopenfilename())
     if data==None:
         return
+    elif data['wrong']>=3:
+        messagebox.showerror("Title", "Your Card Ghoorted.")
     elif e_pin.get()==data['pin']:
+        data['wrong']=0
         manage_window.deiconify()
         root.withdraw()
     else:
+        data['wrong']+=1
+        save('bank/'+data["card number"][0:4]+".json", data)
         messagebox.showwarning("Warning", 
          f"Wrong pin for card {data['card number']}")
 
