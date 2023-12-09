@@ -17,6 +17,21 @@ def get_info(card_number:str):
     else:
         messagebox.showerror("Error", f"Card {card_number} is not a real bank card.")
 
+def change():
+    global data
+    old_pin = entry_old_pin.get()
+    pin1 = entry_new_pin.get()
+    pin2 = entry_new_pin_repeat.get()
+    if old_pin != data['pin']:
+        messagebox.showwarning("", 'Wrong Old Pin!')
+        return
+    if pin1!=pin2: 
+        messagebox.showwarning("", "New Pins don't match!")
+        return
+    data['pin']=pin1
+    messagebox.showinfo("Success", f"Pin changed successfully!")
+    save('bank/'+data["card number"][0:4]+".json", data)
+
 def enter():
     global data
     data = get_info(filedialog.askopenfilename())
@@ -141,7 +156,8 @@ btn_transfer   = Button(manage_window, text='Transfer', cnf=config_btn,
 command=lambda:change_window(transfer_window, manage_window))
 btn_balance    = Button(manage_window, text='Balance', cnf=config_btn,
                                 command=balance)
-btn_change_pin = Button(manage_window, text='Change Pin', cnf=config_btn)
+btn_change_pin = Button(manage_window, text='Change Pin', cnf=config_btn,
+command=lambda:change_window(change_pin_window, manage_window))
 btn_withdraw.grid  (row=1, column=2, sticky='news', padx=20, pady=10)
 btn_transfer.grid  (row=1, column=1, sticky='news', padx=20, pady=10)
 btn_balance.grid   (row=2, column=1, sticky='news', padx=20, pady=10)
@@ -159,6 +175,20 @@ entry_amount                .grid(row=1, column=2)
 entry_destination           .grid(row=2, column=2)
 btn_send                    .grid(row=3, column=1)
 btn_back_transfer_window    .grid(row=3, column=2)
+
+Label(change_pin_window, cnf=config_btn, text='Old Pin: ').grid(row=1, column=1)
+Label(change_pin_window, cnf=config_btn, text='New Pin: ').grid(row=2, column=1)
+Label(change_pin_window, cnf=config_btn, text='Repeat new pin: ').grid(row=3, column=1)
+entry_old_pin = Entry(change_pin_window, cnf=config_entry)
+entry_new_pin = Entry(change_pin_window, cnf=config_entry)
+entry_new_pin_repeat = Entry(change_pin_window, cnf=config_entry)
+entry_old_pin.grid(row=1, column=2)
+entry_new_pin.grid(row=2, column=2)
+entry_new_pin_repeat.grid(row=3, column=2)
+btn_change = Button(change_pin_window, text='Change', cnf=config_btn, command=change)
+btn_back = Button(change_pin_window, text='Back', cnf=config_btn, command=lambda:change_window(manage_window, change_pin_window))
+btn_change.grid(row=4, column=1)
+btn_back.grid(row=4, column=2)
 
 e_pin.pack(padx=15, pady=10)
 btn_enter.pack(padx=15, pady=10)
